@@ -1,0 +1,330 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva - Proyecto de Programación de Software</title>
+    <style>
+        /* Estilos generales */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+          .encabezado {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            text-align: right;
+            color: white; /* Color de texto */
+            padding: 15px;
+            font-size: 1.5rem;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background-image: url(https://i.pinimg.com/originals/21/9a/09/219a09d5c2d9e50e4c2d20c9a03e09af.gif);
+            border: 10px solid blue; /* Borde de 5px de grosor y color azul */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .barra-lateral {
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            
+        }
+
+        .barra-lateral h2 {
+            color: yellow;
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        .barra-lateral ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .barra-lateral ul li {
+            margin: 10px 0;
+        }
+
+        .barra-lateral ul li a {
+            color:blue;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .barra-lateral ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contenedor principal para las diapositivas */
+        .diapositiva {
+        display: none;
+        padding: 20px;
+        width: 80%;
+        max-width: 800px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.75);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        opacity: 0;
+        border: 5px solid blue; /* Color y grosor del borde */
+        border: 10px solid yellow; /* Borde de 5px de grosor y color amarillo */
+}
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Diapositiva activa */
+        .diapositiva.activa {
+            display: block;
+            opacity: 1;
+        }
+
+        .diapositiva.siguiente {
+            transform: translateX(100%);
+        }
+
+        .diapositiva.anterior {
+            transform: translateX(-100%);
+        }
+
+        /* Efecto de escala en los botones de navegación */
+        .navegacion button {
+            padding: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .navegacion button:hover {
+            background-color:blue;
+            transform: scale(1.5);
+        }
+
+        .flecha {
+    font-size: 1.5rem;
+    line-height: 1;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color:blue; /* Azul claro para el fondo de las flechas */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Hacer que las flechas tengan forma circular */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.flecha:hover {
+    background-color: #0b63a4; /* Azul más oscuro para el efecto hover */
+}
+    </style>
+</head>
+
+     <div class="encabezado">
+         <a href="logo.zip"></a>
+    </div>
+    <div class="barra-lateral">
+        <h2>Índice de Contenido</h2>
+        <ul>
+            <li><a href="#diapositiva0" onclick="mostrarDiapositiva(1)">Introducción</a></li>
+            <li><a href="#diapositiva1" onclick="mostrarDiapositiva(2)">Abstract</a></li>
+            <li><a href="#diapositiva2" onclick="mostrarDiapositiva(3)">¿Qué es la programación?</a></li>
+            <li><a href="#diapositiva3" onclick="mostrarDiapositiva(4)">Objetivos</a></li>
+            <li><a href="#diapositiva4" onclick="mostrarDiapositiva(5)">Objetivos espeificos</a></li>
+            <li><a href="#diapositiva5" onclick="mostrarDiapositiva(6)">mas objetivos especificos</a></li>
+            <li><a href="#diapositiva6" onclick="mostrarDiapositiva(7)">Historia</a></li>
+            <li><a href="#diapositiva7" onclick="mostrarDiapositiva(8)">Personajes</a></li>
+            <li><a href="#diapositiva8" onclick="mostrarDiapositiva(9)">Otros Personajes</a></li>
+            <li><a href="#diapositiva9" onclick="mostrarDiapositiva(10)">Universidades</a></li>
+            <li><a href="#diapositiva10" onclick="mostrarDiapositiva(11)">Universidades en otros paises</a></li>
+            <li><a href="#diapositiva11" onclick="mostrarDiapositiva(12)">Conclusión y Aportación</a></li>
+            <li><a href="#diapostiva12" onclick="mostrarDiapositiva(13)">Referencias</a>
+            <li><a href="#diapostiva13" onclick="mostrarDiapositiva(14)">otras Referencias</a>
+        </ul>
+    </div>
+
+    <!--apositivas de la presentación -->
+    <div class="diapositiva activa" id="diapositiva0">
+        <h1>Programación de Software: Un desarrollo de habilidades</h1>
+        <p>Samuel Antonio Niño Cárdenas - Grado 10</p>
+        <p>Docente: Diego Orlando López</p>
+    </div>
+<div class="diapositiva" id="diapositiva1">
+        <h2>Introducción</h2>
+        <p>La programación se ha convertido en un campo de gran crecimiento y alta demanda debido a la digitalización en diversas industrias. Hoy en día, áreas como el desarrollo de aplicaciones, inteligencia artificial, ciberseguridad y análisis de datos requieren expertos bien preparados. Sin embargo, existe una brecha entre el conocimiento teórico que se adquiere en las instituciones académicas y las habilidades necesarias en el mercado laboral. Este proyecto busca analizar las perspectivas profesionales en el desarrollo de software, las necesidades educativas y laborales en Colombia, y cómo la colaboración entre instituciones y empresas puede mejorar la preparación de los futuros profesionales.</p>
+        <img src="https://i.pinimg.com/originals/6b/b6/5b/6bb65b184f4b26a7897cd989d42d3811.gif" alt="Logo " width="200" height="200"  style="border-radius: 40%">
+        <img src="https://i.pinimg.com/originals/09/b5/b7/09b5b738ef2459097c2641ddcd0c4478.gif" alt="Logo " width="200" height="200"  style="border-radius: 20%">
+        <img src="https://i.pinimg.com/474x/89/9e/64/899e643a3449c46476b3c115d5ed2bd0.jpg" alt="Logo " width="200" height="200"  style="border-radius: 45%">
+</div>      
+    <div class="diapositiva" id="diapositiva2">
+        <h1>Abstract</h1>
+        <p>Software programming is essential in the modern era, transforming industries through technology and digitalization. The demand for software developers is growing, particularly in artificial intelligence, cybersecurity, and data analysis. However, a significant gap exists between theoretical knowledge from educational institutions and the practical skills needed in the labor market. This study aims to analyze the professional prospects of software developers in Colombia, emphasizing the importance of continuous education and practical training to keep pace with technological advancements. The project includes interviews with industry experts and employment data analysis to understand the opportunities and challenges in programming. Additionally, it highlights the need for collaboration between educational institutions and companies to develop effective training programs. The goal is to provide recommendations to improve software developer training in Colombia, bridging the gap between theoretical education and market needs, ensuring future professionals are well-prepared for a constantly evolving technological environment.</p>
+</div>
+    <div class="diapositiva" id="diapositiva3">
+        <h2>¿Qué es la programación?</h2>
+        <p>La programación es el proceso de diseñar, escribir y probar un conjunto de instrucciones que le indican a una computadora o sistema cómo realizar ciertas tareas. Estas instrucciones (llamadas código) están escritas en un lenguaje de programación que la máquina puede entender y ejecutar. La programación es necesaria para el desarrollo de aplicaciones, sitios web, videojuegos y sistemas operativos, entre otras tecnologías, permitiendo crear soluciones automatizadas y optimizar procesos en diversas áreas.</p>
+        <img src="https://i.pinimg.com/originals/d3/94/eb/d394eb007b677a96305c932afd55ed01.gif"alt="Logo " width="200" height="200"  style="border-radius: 11%">
+</div>
+   
+<div class="diapositiva" id="diapositiva4">
+        <h2>Objetivos</h2>
+        <strong>Objetivo General:</strong> Analizar la carrera de Programación de Software para identificar las habilidades necesarias, las oportunidades académicas y profesionales en Colombia, y evaluar su viabilidad como una opción para mi proyecto de vida<ul>
+</div>
+            <div class="diapositiva" id="diapositiva5">
+            <strong> Objetivo Especificos: </strong>
+           <li>Identificar las competencias técnicas, habilidades y prácticas que se ven en la ingeniera.</li>
+           <img src="https://miro.medium.com/v2/resize:fit:1400/1*Ut55XNszCQPxCG9qaEQfAw.png"alt="Logo " width="200" height="200"  style="border-radius: 20%">
+            <li>Analizar las oportunidades laborales actuales y futuras en el sector de Programación de Software.</li>
+            <img src="https://f.hubspotusercontent00.net/hubfs/53/Los%20mejores%20software%20de%20ventas%20para%20tu%20negocio.jpg"alt="Logo " width="200" height="200"  style="border-radius: 30%">
+            <li>Evaluar la relación entre la Programación de Software y otras disciplinas tecnológicas.</li>
+            </div>
+            <div class="diapositiva" id="diapositiva6">
+            <img src="https://www.safecreative.org/blog/es/wp-content/uploads/2023/02/derechos-de-autor-en-diseno-grafico-1024x576.jpg"alt="Logo " width="200" height="200"  style="border-radius: 20%">
+            <li>Investigar las principales instituciones educativas y programas académicos en Colombia.</li> 
+            <img src="https://img.lalr.co/cms/2022/10/24100320/emp_universiadades_p9_lun-1.jpg"alt="Logo " width="200" height="200"  style="border-radius: 20%">
+            <li>Establecer un plan de desarrollo personal y profesional</li>
+            <img src="https://opem.b-cdn.net/wp-content/uploads/2020/09/como-hacer-plan-de-carrera-personal-768x384.png"alt="Logo " width="200" height="200"  style="border-radius: 20%">
+        </div>
+            
+
+        
+        <div class="diapositiva" id="diapositiva7">
+        <h2>Historia</h2>
+        <p>La historia de la programación comienza en 1843 con Ada Lovelace, quien creó el primer algoritmo para la Máquina Analítica de Charles Babbage, convirtiéndose en la primera programadora. Durante la Segunda Guerra Mundial, Alan Turing desarrolló conceptos clave en computación y lideró el uso de máquinas para descifrar códigos. En los años 50, surgieron los primeros lenguajes de programación de alto nivel como Fortran y COBOL. En los 70, C se popularizó por su versatilidad, y más adelante, el desarrollo de C++ introdujo la programación orientada a objetos, un enfoque que sigue siendo esencial en la programación moderna.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KjiSgGnMonYlcgIs4dW-UcS1gozUTRVo1A&s" alt="Logo " width="200" height="200"  style="border-radius: 40%">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97aX6dI3-1e-M965NIk69aYgOTCvJJam6UA&s"alt="Logo " width="200" height="200"  style="border-radius: 45%">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuaSYQos_RMD77UGYxSPOh1HgvXtR1WlENzA&s"alt="Logo " width="200" height="200"  style="border-radius: 35%">
+        </div>
+<div class="diapositiva" id="diapositiva8">
+        <h2>personajes</h2>
+        <h3>Ada Lovelace (1815–1852)</h3>
+        <p>Trabajó junto a Charles Babbage en su máquina analítica</p>
+        <img src="https://geneacdn.net/bundles/geneanetgeneastar/images/celebrites/200px/byron.jpg" alt="Logo " width="200" height="200"  style="border-radius: 50%">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2KjiSgGnMonYlcgIs4dW-UcS1gozUTRVo1A&s" alt="Logo " width="200" height="200"  style="border-radius: 35%">
+        <h3>Alan Turing (1912–1954)</h3>
+        <p>lógico y científico de la computación británico, famoso por su trabajo en la teoría de la computación y por descifrar el código de la máquina Enigma durante la Segunda Guerra Mundial.</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRruPk2TZ-cMmcbC1HbSkfNIT8cCNQryChQtA&s"alt="Logo " width="200" height="200"  style="border-radius: 50%">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Enigma.jpg/220px-Enigma.jpg"alt="Logo " width="200" height="200"  style="border-radius: 50%">
+    </div>
+<div class="diapositiva" id="diapositiva9">
+        <h2>Otros personajes</h2>
+         <h3>Grace Hopper (1906–1992)</h3>
+        <p>una pionera en programación y una de las primeras en trabajar con las computadoras en la Marina de los Estados Unidos</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxhPI2mDw_-uZS95XCUalZdlK_pxNe3PxA-w&s" alt="Logo " width="200" height="200"  style="border-radius: 25%">
+        <h3>Donald Knuth (1938–Presente)</h3>
+        <p>es un científico de la computación conocido por su trabajo en el análisis de algoritmos y la creación de la serie de libros "The Art of Computer Programming"</p>
+        <img src="https://www.premiosfronterasdelconocimiento.es/wp-content/uploads/sites/2/2019/06/FBBVA-10-tic-Knuth.jpg"alt="Logo " width="200" height="200"  style="border-radius: 50%">
+        <img src="https://images.cdn2.buscalibre.com/fit-in/520x520/bd/23/bd93ecf994e9f67a2377b3d764b5d1ba.jpg"alt="Logo " width="200" height="200"  style="border-radius: 15%">
+    </div>
+    <div class="diapositiva" id="diapositiva10">
+        <h2>Universidades</h2>
+        <img src="https://colombiaestudia.com/wp-content/uploads/2021/06/Logo_UNIANDES.png"alt="Logo " width="200" height="200"  style="border-radius: 15%">
+        <img src="https://seeklogo.com/images/E/escuela-colombiana-de-ingenieria-julio-garavito-logo-89A7AD5749-seeklogo.com.png"alt="Logo " width="300" height="200"  style="border-radius: 15%">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9iSmw87htFv-sS2jmt9sXHtN5SkWCYXU83Q&s"alt="Logo " width="300" height="200"  style="border-radius: 15%">
+        <img src="https://www1.funcionpublica.gov.co/documents/28587425/41589060/logo-Universidad-Nacional.png/92343759-b2d7-7df3-4425-efa3337f2da7?t=1671747619326"alt="Logo " width="300" height="200"  style="border-radius: 15%">
+        
+        
+    </div>
+<div class="diapositiva" id="diapositiva11">
+        <h2>Universidades internacionales</h2>
+        <img src="https://www.lcmundo.com.co/media/images/2018-11/md_ac13bbebe6cf40408d31a0b379b2ebbb.png"alt="Logo " width="200" height="200"  style="border-radius: 10%">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiLjMiggKFToWl0TXk1RSxZCQKghBUnwzB-A&s"alt="Logo " width="200" height="200"  style="border-radius: 15%">
+        <img src="https://images.ctfassets.net/mrbo2ykgx5lt/600/a2cf895f44d12cff558fb26d76330723/tum_logo.gif?&w=1200&h=630&fm=jpg&f=center"alt="Logo " width="300" height="200"  style="border-radius: 15%">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Huberlin-logo.svg"alt="Logo " width="500" height="250"  style="border-radius: 0%">
+</div>
+    <div class="diapositiva" id="diapositiva12">
+  
+        <h2>Conclusión y Aportación de la Investigación</h2>
+        <p><strong>Conclusión:</strong>Un estudio sobre carreras de programación en Colombia identificó competencias clave como el conocimiento de lenguajes como Python y JavaScript y metodologías Agile y DevOps. Se enfatizó la importancia de una formación integral que combine habilidades técnicas y blandas, adaptándose a las necesidades de los mercados laborales de Chía y Bogotá.</p>
+        
+</div>    
+    <div class="diapositiva" id="diapositiva13">
+        <h1>Referencias</h1>
+<p>3Pillar Global. (2021). ¿Por qué es tan importante el desarrollo de software? 3Pillar Global. https://www.3pillarglobal.com/insights/blog/importance-of-software-development/1</p>
+<p>Pham, T. (2020) La importancia del desarrollo de software para la sociedad y ejemplos. Ho Chi Minh City Technology. https://saigontechnology.com/blog/the-importance-of-software-development-to-society-examples2</p>
+<p>Wikipedia. (n.d.). Historia de los lenguajes de programación. Wikipedia. https://en.wikipedia.org/wiki/History_of_programming_languages3</p>
+<p>DevSkiller. (n.d.). Historia de los lenguajes de programación. DevSkiller. https://devskiller.com/blog/history-of-programming-languages/4</p>
+<p>Atlassian. (n.d.). ¿Qué es Agil? Atlassian. https://www.atlassian.com/agile5</p>
+<p>BrowserStack. (2024). Metodologías de desarrollo ágil: Una guía esencial. BrowserStack. https://www.browserstack.com/guide/agile-development-methodologies6</p>
+<p>ProFuturo. (2022). Innovación con propósito: EdTech en Colombia. ProFuturo. https://profuturo.education/en/observatory/approaches/innovation-with-a-purpose-edtech-in-colombia/7</p>
+<p>World Bank. (2002). Ciencia y tecnología en Colombia: situación y perspectivas. World Bank. https://documents.worldbank.org/curated/en/358501468023043488/pdf/32445.pdf8</p>
+    </div>
+<div class="diapositiva" id="diapositiva14">
+<p>Mendoza Munar, L. (2018). Desarrollo de software en Colombia: una aproximación legal. Revista de Derecho, Estado y telecomunicaciones. https://www.periodicos.unb.br/index.php/RDET/article/view/214939</p>
+<p>“La programación se ha convertido en una habilidad indispensable en diversas industrias (3Pillar Global, 2021; Pham, 2020).”</p>
+<p>“La evolución de los lenguajes de programación ha sido fundamental para el desarrollo de la informática moderna (Wikipedia, n.d.; DevSkiller, n.d.).”</p>
+<p>“Las metodologías ágiles han transformado la manera en que se desarrollan los proyectos de software (Atlassian, n.d.; BrowserStack, 2024).”</p>
+<p>“El estado de la educación tecnológica en Colombia ha mejorado significativamente en los últimos años (ProFuturo, 2022; World Bank, 2002).”</p>
+<p>“La Ley de Protección de Datos Personales establece principios y derechos para la protección de la información personal (Ley 1581 de 2012; Mendoza Munar, 2018).”</p>
+</p>
+    </div>
+    <!-- Más diapositivas según sea necesario -
+    <!-- Controles de navegación -->
+    <div class="navegacion">
+        <button class="flecha" onclick="anterior()">&#8592;</button>
+        <button class="flecha" onclick="siguiente()">&#8594;</button>
+    </div>
+
+    <!-- JavaScript para controlar la navegación -->
+    <script>
+        let indiceActual = 0;
+        const diapositivas = document.querySelectorAll('.diapositiva');
+
+        function mostrarDiapositiva(indice) {
+            diapositivas.forEach((diapositiva, i) => {
+                diapositiva.classList.remove('activa', 'siguiente', 'anterior');
+                if (i === indice) {
+                    diapositiva.classList.add('activa');
+                } else if (i < indice) {
+                    diapositiva.classList.add('anterior');
+                } else {
+                    diapositiva.classList.add('siguiente');
+                }
+            });
+        }
+
+        function siguiente() {
+            if (indiceActual < diapositivas.length - 1) {
+                indiceActual++;
+                mostrarDiapositiva(indiceActual);
+            }
+        }
+
+        function anterior() {
+            if (indiceActual > 0) {
+                indiceActual--;
+                mostrarDiapositiva(indiceActual);
+            }
+        }
+
+        mostrarDiapositiva(indiceActual);
+    </script>
+
+</html>
